@@ -6,11 +6,9 @@
 
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.demo.bank.Controllers.AdminController">
-   <children>
       <Text layoutX="157.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Segunda Tela">
          <font>
             <Font name="Century Gothic" size="43.0" />
          </font>
       </Text>
-   </children>
 </AnchorPane>

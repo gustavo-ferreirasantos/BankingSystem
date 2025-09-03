@@ -1,0 +1,6 @@
+// Se precisar acessar o controller do Admin:
+// AdminController adminController = adminLoader.getController();
+
+
+// Se precisar acessar o controller do Login:
+// LoginController loginController = loginLoader.getController();

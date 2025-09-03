@@ -20,22 +20,34 @@ public class App extends Application {
     public void start(Stage primaryStage) throws IOException {
         stage = primaryStage;
         primaryStage.setTitle("Login");
-        Parent fxmlLogin = FXMLLoader.load(getClass().getResource("FXML/Login.fxml"));
+
+        // -------- LOGIN -----------
+        FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("FXML/Login.fxml"));
+        Parent fxmlLogin = loginLoader.load();
         LoginScene = new Scene(fxmlLogin);
-        Parent fxmlAdmin =  FXMLLoader.load(getClass().getResource("FXML/Admin.fxml"));
+
+        // -------- ADMIN -----------
+        FXMLLoader adminLoader = new FXMLLoader(
+                getClass().getResource("FXML/Admin.fxml")
+        );
+        Parent fxmlAdmin = adminLoader.load();
         AdminScene = new Scene(fxmlAdmin);
+
+        // -------- ICONS -----------
         Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("Images/Book.png")));
         primaryStage.getIcons().add(icon);
+
+
+
         primaryStage.setScene(LoginScene);
         primaryStage.show();
-
-    }
-    public static void main(String[] args) {
-        launch();
     }
 
-    public static void setScene(String str) {
-        switch (str){
+
+
+
+    public static void setScene(String scene) {
+        switch (scene){
             case "Admin":
                 stage.setScene(AdminScene);
                 break;
@@ -45,4 +57,15 @@ public class App extends Application {
         }
 
     }
+
+
+
+
+
+
+
+    public static void main(String[] args) {
+        launch();
+    }
+
 }
