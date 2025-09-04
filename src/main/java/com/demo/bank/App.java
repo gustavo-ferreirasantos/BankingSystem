@@ -13,6 +13,7 @@ import java.util.Objects;
 public class App extends Application {
     private static Scene LoginScene;
     private static Scene AdminScene;
+    private static Scene ClientScene;
     private static Stage stage;
 
 
@@ -27,11 +28,14 @@ public class App extends Application {
         LoginScene = new Scene(fxmlLogin);
 
         // -------- ADMIN -----------
-        FXMLLoader adminLoader = new FXMLLoader(
-                getClass().getResource("FXML/Admin.fxml")
-        );
+        FXMLLoader adminLoader = new FXMLLoader(getClass().getResource("FXML/Admin.fxml"));
         Parent fxmlAdmin = adminLoader.load();
         AdminScene = new Scene(fxmlAdmin);
+
+        // -------- CLIENT -----------
+        FXMLLoader clientLoader = new FXMLLoader(getClass().getResource("FXML/Client.fxml"));
+        Parent fxmlClient = clientLoader.load();
+        ClientScene = new Scene(fxmlClient);
 
         // -------- ICONS -----------
         Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("Images/Book.png")));
@@ -50,9 +54,15 @@ public class App extends Application {
         switch (scene){
             case "Admin":
                 stage.setScene(AdminScene);
+                stage.setTitle("Admin");
+                break;
+            case "Client":
+                stage.setScene(ClientScene);
+                stage.setTitle("Client");
                 break;
             case "Login":
                 stage.setScene(LoginScene);
+                stage.setTitle("Login");
                 break;
         }
 

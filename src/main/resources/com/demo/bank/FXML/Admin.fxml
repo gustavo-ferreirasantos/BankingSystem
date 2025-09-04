@@ -4,9 +4,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.demo.bank.Controllers.AdminController">
-      <Text layoutX="157.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Segunda Tela">
+      <Text layoutX="231.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin">
          <font>
             <Font name="Century Gothic" size="43.0" />
          </font>
