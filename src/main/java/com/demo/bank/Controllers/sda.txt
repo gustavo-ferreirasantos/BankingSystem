@@ -1,19 +1,12 @@
 package com.demo.bank.Controllers;
 
 import com.demo.bank.App;
-import com.demo.bank.Classes.Client;
-import com.demo.bank.Classes.Endereco;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
@@ -25,22 +18,12 @@ import java.util.logging.Logger;
 
 public class AdminController {
 
-    private int numUser;
-
     private static final Logger logger = Logger.getLogger(AdminController.class.getName());
+    private Parent ScenePlaceholder;
+    private Parent SceneClients;
+    private Parent SceneAdd;
 
 
-
-
-    @FXML
-    protected TableView<Client> table = new TableView<>();
-    @FXML
-    protected TableColumn<Client, String> column1 = new TableColumn<>("Name");
-    @FXML
-    protected TableColumn<Client, String> column2 = new TableColumn<>("Cpf");
-
-    @FXML
-    protected TextField tfName, tfEmail, tfPassword, tfCep, tfCpf, tfNumber, tfStreet, tfCity;
 
 
     @FXML
@@ -78,40 +61,19 @@ public class AdminController {
     }
     */
 
-    @FXML
-    public void initialize() {
-        // Define as colunas (nomes devem bater com os getters da classe Client)
-        column1.setCellValueFactory(new PropertyValueFactory<>("nameClient"));
-        column2.setCellValueFactory(new PropertyValueFactory<>("cpf"));
-
-        // Adiciona os clientes existentes (se já tiver)
-        table.setItems(FXCollections.observableArrayList(App.getListClients()));
-    }
-
-    @FXML
-    protected void CreateClient(){
-        App.setListClients(tfName.getText(), new Endereco(tfCity.getText(), tfStreet.getText(), Integer.parseInt(tfNumber.getText()), Integer.parseInt(tfCep.getText())), tfCpf.getText());
-
-        for(int i = 0; i<App.getListClients().size(); i++){
-            System.out.printf("\nId:%d ======== Nome:%s  ======= Cpf: %s",App.getListClients().get(i).getAccount(), App.getListClients().get(i).getNameClient(), App.getListClients().get(i).getCpf());
-            table.getItems().setAll(App.getListClients());
-        }
-
-
-    }
 
 
     // ---------------- Troca de Telas ----------------
     @FXML
     protected void SceneClients(ActionEvent event) {
         boxCentral.getChildren().clear();
-        boxCentral.getChildren().add(App.getScreen("Admin_Clients"));
+        boxCentral.getChildren().add(SceneClients);
     }
 
     @FXML
-    protected void SceneAdd(ActionEvent event) {
+    protected void SceneCreateClient(ActionEvent event) {
         boxCentral.getChildren().clear();
-        boxCentral.getChildren().add(App.getScreen("Admin_Add"));
+        boxCentral.getChildren().add(SceneAdd);
     }
 
 
@@ -119,7 +81,6 @@ public class AdminController {
     @FXML
     protected void Exit(){
         boxCentral.getChildren().clear(); // limpa qualquer tela carregada
-        boxCentral.getChildren().add(App.getScreen("Admin_Placeholder"));
         App.setScene("Login");
     }
 

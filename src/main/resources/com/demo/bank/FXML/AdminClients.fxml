@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="506.0" prefWidth="705.0" stylesheets="@../css/style.css" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.demo.bank.Controllers.AdminController">
+   <children>
+      <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" styleClass="column" stylesheets="@../css/style.css">
+        <columns>
+          <TableColumn fx:id="column1" prefWidth="336.00004881620407" text="Name" />
+          <TableColumn fx:id="column2" minWidth="0.0" prefWidth="355.99993896484375" text="Cpf" />
+        </columns>
+      </TableView>
+   </children>
+</StackPane>

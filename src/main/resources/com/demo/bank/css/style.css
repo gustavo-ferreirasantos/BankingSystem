@@ -1,0 +1,25 @@
+.box_central{
+    -fx-background-color: #EAEEF4;
+}
+
+.menu{
+    -fx-background-color: #353A56;
+    /*
+    -fx-background-color: #748CF1
+    */
+}
+
+
+.btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-border-width: 2px;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-border-style: solid;
+    -fx-border-color: #141313;
+}
+
+.column{
+    -fx-text-alignment: center;
+}
