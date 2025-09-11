@@ -104,12 +104,17 @@ public class AdminController {
     // ---------------- Troca de Telas ----------------
     @FXML
     protected void SceneClients(ActionEvent event) {
+        effectButton(btClients);
+
+
         boxCentral.getChildren().clear();
         boxCentral.getChildren().add(App.getScreen("Admin_Clients"));
     }
 
     @FXML
     protected void SceneAdd(ActionEvent event) {
+        effectButton(btCreate);
+
         boxCentral.getChildren().clear();
         boxCentral.getChildren().add(App.getScreen("Admin_Add"));
     }
@@ -118,11 +123,30 @@ public class AdminController {
     // ---------------- Exit ----------------
     @FXML
     protected void Exit(){
+        effectButton(null);
+
         boxCentral.getChildren().clear(); // limpa qualquer tela carregada
         boxCentral.getChildren().add(App.getScreen("Admin_Placeholder"));
         App.setScene("Login");
     }
 
+
+    @FXML
+    protected void effectButton(Button button){
+        btCreate.getStyleClass().remove("btn_after");
+        btClients.getStyleClass().remove("btn_after");
+        btCreate.getStyleClass().add("btn");
+        btClients.getStyleClass().add("btn");
+        if (button == null){
+            return;
+        }else if(button.getStyleClass().contains("btn")){
+            button.getStyleClass().remove("btn_");
+            button.getStyleClass().add("btn_after");
+        }else{
+            button.getStyleClass().remove("btn_after");
+            button.getStyleClass().add("btn");
+        }
+    }
 
 
 }

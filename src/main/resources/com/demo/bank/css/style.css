@@ -20,6 +20,15 @@
     -fx-border-color: #141313;
 }
 
+.btn_after {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-border-width: 2px;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-border-style: solid;
+    -fx-border-color: #141313;
+}
 .column{
     -fx-text-alignment: center;
 }
