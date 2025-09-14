@@ -125,7 +125,6 @@ public class AdminController {
         );
 
         //App.setListClients("Gustavo", new Endereco("Av. Central", "Rio de Janeiro", 456, 87654321), "012.345.678-90");
-        );
 
         for(int i = 0; i<App.getListClients().size(); i++){
             System.out.printf("\nId:%d ======== Nome:%s  ======= Cpf: %s",
