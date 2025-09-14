@@ -5,6 +5,7 @@ module com.demo.bank {
     requires com.google.gson;
     requires java.sql;
     requires java.desktop;
+    requires mysql.connector.j;
 
     opens com.demo.bank to javafx.fxml;
     exports com.demo.bank;

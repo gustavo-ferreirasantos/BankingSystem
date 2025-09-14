@@ -4,6 +4,7 @@ import com.demo.bank.App;
 import com.demo.bank.Classes.Client;
 import com.demo.bank.Classes.Endereco;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,10 +15,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,16 +34,20 @@ public class AdminController {
 
 
 
-
     @FXML
-    protected TableView<Client> table = new TableView<>();
+    protected TableView<Client> table;
     @FXML
-    protected TableColumn<Client, String> column1 = new TableColumn<>("Name");
+    protected TableColumn<Client, String> column1;
     @FXML
-    protected TableColumn<Client, String> column2 = new TableColumn<>("Cpf");
+    protected TableColumn<Client, String> column2;
 
     @FXML
     protected TextField tfName, tfEmail, tfPassword, tfCep, tfCpf, tfNumber, tfStreet, tfCity;
+
+    @FXML
+    private BorderPane root;
+    @FXML
+    private Button btnOculto;
 
 
     @FXML
@@ -80,22 +87,55 @@ public class AdminController {
 
     @FXML
     public void initialize() {
-        // Define as colunas (nomes devem bater com os getters da classe Client)
-        column1.setCellValueFactory(new PropertyValueFactory<>("nameClient"));
-        column2.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+        if(column1!=null) {
+            // Define as colunas (nomes devem bater com os getters da classe Client)
+            column1.setCellValueFactory(new PropertyValueFactory<>("nameClient"));
+            column2.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+            // Adiciona os clientes existentes (se já tiver)
 
-        // Adiciona os clientes existentes (se já tiver)
+            table.setItems(FXCollections.observableArrayList(App.getListClients()));
+            // Listener para quando o BorderPane for adicionado à cena
+            root.sceneProperty().addListener((obs, oldScene, newScene) -> {
+                if (newScene != null) {
+                    atualizarTabela();
+                }
+            });
+
+        }
+
+    }
+
+    @FXML
+    public void atualizarTabela() {
         table.setItems(FXCollections.observableArrayList(App.getListClients()));
     }
 
     @FXML
     protected void CreateClient(){
-        App.setListClients(tfName.getText(), new Endereco(tfCity.getText(), tfStreet.getText(), Integer.parseInt(tfNumber.getText()), Integer.parseInt(tfCep.getText())), tfCpf.getText());
+        /*
+        App.setListClients(
+                tfName.getText(),
+                new Endereco(
+                        tfCity.getText(),
+                        tfStreet.getText(),
+                        Integer.parseInt(tfNumber.getText()),
+                        Integer.parseInt(tfCep.getText())
+                ),
+                tfCpf.getText()
+        );
+        */
+        App.setListClients("Gustavo", new Endereco("Av. Central", "Rio de Janeiro", 456, 87654321), "012.345.678-90");
+        //table.setItems(clientList);
+        //atualizarTabela();
+        //table.getItems().setAll(App.getListClients());
 
         for(int i = 0; i<App.getListClients().size(); i++){
-            System.out.printf("\nId:%d ======== Nome:%s  ======= Cpf: %s",App.getListClients().get(i).getAccount(), App.getListClients().get(i).getNameClient(), App.getListClients().get(i).getCpf());
-            table.getItems().setAll(App.getListClients());
+            System.out.printf("\nId:%d ======== Nome:%s  ======= Cpf: %s",
+                    App.getListClients().get(i).getAccount(),
+                    App.getListClients().get(i).getNameClient(),
+                    App.getListClients().get(i).getCpf());
         }
+
 
 
     }
@@ -103,7 +143,7 @@ public class AdminController {
 
     // ---------------- Troca de Telas ----------------
     @FXML
-    protected void SceneClients(ActionEvent event) {
+    protected void SceneClients() {
         effectButton(btClients);
 
 
@@ -112,7 +152,7 @@ public class AdminController {
     }
 
     @FXML
-    protected void SceneAdd(ActionEvent event) {
+    protected void SceneAdd() {
         effectButton(btCreate);
 
         boxCentral.getChildren().clear();

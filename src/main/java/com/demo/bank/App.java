@@ -29,7 +29,6 @@ public class App extends Application {
     protected static ArrayList<Client> ListClients = new ArrayList<>();
 
     public static void setListClients(String nameClient, Endereco endereco, String cpf) {
-
         ListClients.add(new Client(nameClient, endereco, cpf));
     }
 
@@ -126,7 +125,16 @@ public class App extends Application {
         System.out.println(admin.getId());
         */
 // CPFs válidos (apenas para testes)
-        App.setListClients("João Silva",   new Endereco("Rua A", "São Paulo", 123, 12345678), "111.444.777-35");
+        App.setListClients(
+                "João Silva",
+                new Endereco(
+                        "Rua A",
+                        "São Paulo",
+                        123,
+                        12345678
+                ),
+                "111.444.777-35"
+        );
         App.setListClients("Maria Oliveira", new Endereco("Av. Central", "Rio de Janeiro", 456, 87654321), "012.345.678-90");
         App.setListClients("Carlos Souza", new Endereco("Rua das Flores", "Belo Horizonte", 789, 11223344), "987.654.321-00");
         App.setListClients("Ana Costa",    new Endereco("Praça da Sé", "Salvador", 101, 44332211), "258.371.460-08");
