@@ -107,12 +107,12 @@ public class AdminController {
 
     @FXML
     public void atualizarTabela() {
+        //table.getItems().setAll(App.getListClients());
         table.setItems(FXCollections.observableArrayList(App.getListClients()));
     }
 
     @FXML
     protected void CreateClient(){
-        /*
         App.setListClients(
                 tfName.getText(),
                 new Endereco(
@@ -123,11 +123,9 @@ public class AdminController {
                 ),
                 tfCpf.getText()
         );
-        */
-        App.setListClients("Gustavo", new Endereco("Av. Central", "Rio de Janeiro", 456, 87654321), "012.345.678-90");
-        //table.setItems(clientList);
-        //atualizarTabela();
-        //table.getItems().setAll(App.getListClients());
+
+        //App.setListClients("Gustavo", new Endereco("Av. Central", "Rio de Janeiro", 456, 87654321), "012.345.678-90");
+        );
 
         for(int i = 0; i<App.getListClients().size(); i++){
             System.out.printf("\nId:%d ======== Nome:%s  ======= Cpf: %s",
@@ -135,9 +133,6 @@ public class AdminController {
                     App.getListClients().get(i).getNameClient(),
                     App.getListClients().get(i).getCpf());
         }
-
-
-
     }
 
 
