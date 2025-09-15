@@ -42,7 +42,7 @@ public class LoginController implements Initializable {
 
 
     @FXML
-    protected void AdminScene(){
+    protected void SelectScene(){
         App.setScene(UserType);
     }
 }

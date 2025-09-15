@@ -4,12 +4,7 @@ import com.demo.bank.App;
 import com.demo.bank.Classes.Client;
 import com.demo.bank.Classes.Endereco;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -18,36 +13,22 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 public class AdminController {
-
-    private int numUser;
-
-    private static final Logger logger = Logger.getLogger(AdminController.class.getName());
 
 
 
     @FXML
     protected TableView<Client> table;
     @FXML
-    protected TableColumn<Client, String> column1;
-    @FXML
-    protected TableColumn<Client, String> column2;
+    protected TableColumn<Client, String> columnName , columnCpf, columnId ;
 
     @FXML
-    protected TextField tfName, tfEmail, tfPassword, tfCep, tfCpf, tfNumber, tfStreet, tfCity;
+    protected TextField tfName, tfEmail, tfPassword, tfCep, tfCpf, tfNumber;
 
     @FXML
     private BorderPane root;
-    @FXML
-    private Button btnOculto;
 
 
     @FXML
@@ -67,37 +48,22 @@ public class AdminController {
     @FXML
     protected StackPane boxCentral;
 
-    /*
-    // ---------------- Tela Inicial ----------------
-    @FXML
-    public void initialize() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/demo/bank/FXML/AdminPlaceholder.fxml"));
-            ScenePlaceholder = loader.load();
-            loader = new FXMLLoader(getClass().getResource("/com/demo/bank/FXML/AdminClients.fxml"));
-            SceneClients = loader.load();
-            loader = new FXMLLoader(getClass().getResource("/com/demo/bank/FXML/AdminAdd.fxml"));
-            SceneAdd = loader.load();
-            boxCentral.getChildren().add(ScenePlaceholder);
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, "Erro ao carregar FXML", e);
-        }
-    }
-    */
 
     @FXML
     public void initialize() {
-        if(column1!=null) {
+        if(columnId!=null) {
             // Define as colunas (nomes devem bater com os getters da classe Client)
-            column1.setCellValueFactory(new PropertyValueFactory<>("nameClient"));
-            column2.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+            columnName.setCellValueFactory(new PropertyValueFactory<>("nameClient"));
+            columnCpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+            columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
+
             // Adiciona os clientes existentes (se já tiver)
 
             table.setItems(FXCollections.observableArrayList(App.getListClients()));
             // Listener para quando o BorderPane for adicionado à cena
             root.sceneProperty().addListener((obs, oldScene, newScene) -> {
                 if (newScene != null) {
-                    atualizarTabela();
+                    UpdateTable();
                 }
             });
 
@@ -106,7 +72,7 @@ public class AdminController {
     }
 
     @FXML
-    public void atualizarTabela() {
+    public void UpdateTable() {
         //table.getItems().setAll(App.getListClients());
         table.setItems(FXCollections.observableArrayList(App.getListClients()));
     }
@@ -116,19 +82,19 @@ public class AdminController {
         App.setListClients(
                 tfName.getText(),
                 new Endereco(
-                        tfCity.getText(),
-                        tfStreet.getText(),
                         Integer.parseInt(tfNumber.getText()),
                         Integer.parseInt(tfCep.getText())
                 ),
-                tfCpf.getText()
+                tfCpf.getText(),
+                tfEmail.getText(),
+                tfPassword.getText()
+
         );
 
-        //App.setListClients("Gustavo", new Endereco("Av. Central", "Rio de Janeiro", 456, 87654321), "012.345.678-90");
 
         for(int i = 0; i<App.getListClients().size(); i++){
             System.out.printf("\nId:%d ======== Nome:%s  ======= Cpf: %s",
-                    App.getListClients().get(i).getAccount(),
+                    App.getListClients().get(i).getId(),
                     App.getListClients().get(i).getNameClient(),
                     App.getListClients().get(i).getCpf());
         }
@@ -139,8 +105,6 @@ public class AdminController {
     @FXML
     protected void SceneClients() {
         effectButton(btClients);
-
-
         boxCentral.getChildren().clear();
         boxCentral.getChildren().add(App.getScreen("Admin_Clients"));
     }
@@ -171,14 +135,14 @@ public class AdminController {
         btClients.getStyleClass().remove("btn_after");
         btCreate.getStyleClass().add("btn");
         btClients.getStyleClass().add("btn");
-        if (button == null){
-            return;
-        }else if(button.getStyleClass().contains("btn")){
-            button.getStyleClass().remove("btn_");
-            button.getStyleClass().add("btn_after");
-        }else{
-            button.getStyleClass().remove("btn_after");
-            button.getStyleClass().add("btn");
+        if (button != null) {
+            if(button.getStyleClass().contains("btn")){
+                button.getStyleClass().remove("btn");
+                button.getStyleClass().add("btn_after");
+            }else{
+                button.getStyleClass().remove("btn_after");
+                button.getStyleClass().add("btn");
+            }
         }
     }
 

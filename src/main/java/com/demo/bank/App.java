@@ -3,6 +3,7 @@ package com.demo.bank;
 import com.demo.bank.Classes.Admin;
 import com.demo.bank.Classes.Client;
 import com.demo.bank.Classes.Endereco;
+import com.demo.bank.Classes.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -28,13 +29,14 @@ public class App extends Application {
 
     protected static ArrayList<Client> ListClients = new ArrayList<>();
 
-    public static void setListClients(String nameClient, Endereco endereco, String cpf) {
-        ListClients.add(new Client(nameClient, endereco, cpf));
+    public static void setListClients(String nameClient, Endereco endereco, String cpf, String email, String password) {
+        ListClients.add(new Client(nameClient, endereco, cpf, email, password));
     }
 
     public static ArrayList<Client> getListClients() {
         return ListClients;
     }
+
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -71,6 +73,7 @@ public class App extends Application {
 
         primaryStage.setScene(loginScene);
         primaryStage.centerOnScreen();
+
         primaryStage.show();
     }
 
@@ -108,11 +111,12 @@ public class App extends Application {
                 break;
         }
         stage.centerOnScreen();
+
     }
 
     public static void main(String[] args) {
-        Admin admin = new Admin();
         /*
+        Admin admin = new Admin();
         Client client1 = new Client("G", 13, new Endereco("Jag", "dfadf", 21, 2341), "948");
         Client client2 = new Client("G", 14, new Endereco("Jag", "dfadf", 21, 2341), "642424");
         ListClients.add(client1);
@@ -128,18 +132,69 @@ public class App extends Application {
         App.setListClients(
                 "João Silva",
                 new Endereco(
-                        "Rua A",
-                        "São Paulo",
-                        123,
-                        12345678
+                        12345678,
+                        123
                 ),
-                "111.444.777-35"
+                "111.444.777-35",
+                "joao.silva@email.com",
+                "senha123"
         );
-        App.setListClients("Maria Oliveira", new Endereco("Av. Central", "Rio de Janeiro", 456, 87654321), "012.345.678-90");
-        App.setListClients("Carlos Souza", new Endereco("Rua das Flores", "Belo Horizonte", 789, 11223344), "987.654.321-00");
-        App.setListClients("Ana Costa",    new Endereco("Praça da Sé", "Salvador", 101, 44332211), "258.371.460-08");
-        App.setListClients("Pedro Lima",   new Endereco("Av. Paulista", "São Paulo", 202, 55667788), "314.159.265-90");
-        App.setListClients("Lucas Moreira",new Endereco("Al. Santos", "Porto Alegre", 303, 66778899), "443.201.879-89");
+
+        App.setListClients(
+                "Maria Oliveira",
+                new Endereco(
+                        87654321,
+                        456
+                ),
+                "012.345.678-90",
+                "maria.oliveira@email.com",
+                "senha456"
+        );
+
+        App.setListClients(
+                "Carlos Souza",
+                new Endereco(
+                        11223344,
+                        789
+                ),
+                "987.654.321-00",
+                "carlos.souza@email.com",
+                "senha789"
+        );
+
+        App.setListClients(
+                "Ana Costa",
+                new Endereco(
+                        44332211,
+                        101
+                ),
+                "258.371.460-08",
+                "ana.costa@email.com",
+                "senha101"
+        );
+
+        App.setListClients(
+                "Pedro Lima",
+                new Endereco(
+                        55667788,
+                        202
+                ),
+                "314.159.265-90",
+                "pedro.lima@email.com",
+                "senha202"
+        );
+
+        App.setListClients(
+                "Lucas Moreira",
+                new Endereco(
+                        66778899,
+                        303
+                ),
+                "443.201.879-89",
+                "lucas.moreira@email.com",
+                "senha303"
+        );
+
 
         launch();
     }

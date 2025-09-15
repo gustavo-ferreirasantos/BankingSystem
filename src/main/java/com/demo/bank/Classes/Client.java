@@ -1,24 +1,33 @@
 package com.demo.bank.Classes;
 
 
-import com.demo.bank.App;
 
 public class Client extends User {
     private String nameClient;
-    private int account;
+    private int id;
     private Endereco endereco;
     private String cpf;
-    private int numUser;
+
+
+    private static int numUser = 1000;
 
 
 
-    public Client(String nameClient, Endereco endereco, String cpf) {
+    public Client(String nameClient, Endereco endereco, String cpf, String email, String password)
+    {
+        super.setEmail(email);
+        super.setPassword(password);
         this.nameClient = nameClient;
-        this.account = ++numUser;
+        this.id = ++numUser;
         this.endereco = endereco;
-        if(validateCpf(cpf)){
-            this.cpf = cpf;
+        try {
+            if(validateCpf(cpf)){
+                this.cpf = formatCpf(cpf);
+            }
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
         }
+
     }
 
 
@@ -29,13 +38,6 @@ public class Client extends User {
         this.nameClient = nameClient;
     }
 
-
-    public int getAccount() {
-        return account;
-    }
-    public void setAccount(int account) {
-        this.account = account;
-    }
 
 
     public Endereco getEndereco() {
@@ -105,11 +107,11 @@ public class Client extends User {
     }
 
 
+    public int getId() {
+        return id;
+    }
 
-
-
-
-
-
-
+    public void setId(int id) {
+        this.id = id;
+    }
 }

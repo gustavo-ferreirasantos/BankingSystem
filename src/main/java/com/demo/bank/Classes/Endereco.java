@@ -7,41 +7,10 @@ public class Endereco {
     private int cep;
 
 
-    public String getCity() {
-        return city;
-    }
-    public void setCity(String city) {
-        this.city = city;
-    }
 
-
-    public String getStreet() {
-        return street;
-    }
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-
-    public int getNumber() {
-        return number;
-    }
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-
-    public int getCep() {
-        return cep;
-    }
-    public void setCep(int cep) {
-        this.cep = cep;
-    }
-
-
-    public Endereco(String city, String street, int number, int cep) {
-        this.city = city;
-        this.street = street;
+    public Endereco(int cep, int number) {
+        /*this.city = city;
+        this.street = street;*/
         this.number = number;
         this.cep = cep;
     }

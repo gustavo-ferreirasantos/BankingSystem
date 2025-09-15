@@ -2,7 +2,7 @@ package com.demo.bank.Classes;
 
 import com.demo.bank.App;
 
-public class User {
+public abstract class User {
     private String email;
     private String password;
 

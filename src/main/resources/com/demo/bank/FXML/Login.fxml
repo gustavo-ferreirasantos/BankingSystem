@@ -12,7 +12,7 @@
       <ImageView fitHeight="600.0" fitWidth="436.0" layoutX="-4.0">
             <Image url="@../Images/Login.jpg" />
       </ImageView>
-      <Button fx:id="btLoginButton" layoutX="71.0" layoutY="509.0" mnemonicParsing="false" onAction="#AdminScene" prefHeight="26.0" prefWidth="281.0" style="-fx-background-color: transparent;" />
+      <Button fx:id="btLoginButton" layoutX="71.0" layoutY="509.0" mnemonicParsing="false" onAction="#SelectScene" prefHeight="26.0" prefWidth="281.0" style="-fx-background-color: transparent;" />
       <TextField fx:id="tfUserName" layoutX="68.0" layoutY="376.0" prefHeight="34.0" prefWidth="291.0" style="-fx-background-color: #f1f1f3; -fx-border-color: #ccc; -fx-border-radius: 20px;" AnchorPane.bottomAnchor="189.6" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="70.80000000000001" AnchorPane.topAnchor="376.0" />
       <HBox layoutX="63.0" layoutY="460.0" prefHeight="40.0" prefWidth="301.0" style="-fx-background-color: #f1f1f3;" />
       <HBox layoutX="63.0" layoutY="546.0" prefHeight="40.0" prefWidth="301.0" style="-fx-background-color: #f1f1f3;" />
