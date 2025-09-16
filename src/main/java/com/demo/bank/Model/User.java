@@ -1,6 +1,4 @@
-package com.demo.bank.Classes;
-
-import com.demo.bank.App;
+package com.demo.bank.Model;
 
 public abstract class User {
     private String email;

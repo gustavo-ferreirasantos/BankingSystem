@@ -1,9 +1,8 @@
 package com.demo.bank;
 
-import com.demo.bank.Classes.Admin;
-import com.demo.bank.Classes.Client;
-import com.demo.bank.Classes.Endereco;
-import com.demo.bank.Classes.User;
+import com.demo.bank.API.ViaCepService;
+import com.demo.bank.Model.Client;
+import com.demo.bank.Model.Endereco;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -114,7 +113,7 @@ public class App extends Application {
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         /*
         Admin admin = new Admin();
         Client client1 = new Client("G", 13, new Endereco("Jag", "dfadf", 21, 2341), "948");
@@ -129,34 +128,11 @@ public class App extends Application {
         System.out.println(admin.getId());
         */
 // CPFs válidos (apenas para testes)
-        App.setListClients(
-                "João Silva",
-                new Endereco(
-                        12345678,
-                        123
-                ),
-                "111.444.777-35",
-                "joao.silva@email.com",
-                "senha123"
-        );
 
-        App.setListClients(
-                "Maria Oliveira",
-                new Endereco(
-                        87654321,
-                        456
-                ),
-                "012.345.678-90",
-                "maria.oliveira@email.com",
-                "senha456"
-        );
 
         App.setListClients(
                 "Carlos Souza",
-                new Endereco(
-                        11223344,
-                        789
-                ),
+                ViaCepService.getEndereco("11223344", 44),
                 "987.654.321-00",
                 "carlos.souza@email.com",
                 "senha789"
@@ -164,10 +140,7 @@ public class App extends Application {
 
         App.setListClients(
                 "Ana Costa",
-                new Endereco(
-                        44332211,
-                        101
-                ),
+                ViaCepService.getEndereco("48902300", 723),
                 "258.371.460-08",
                 "ana.costa@email.com",
                 "senha101"
@@ -175,10 +148,8 @@ public class App extends Application {
 
         App.setListClients(
                 "Pedro Lima",
-                new Endereco(
-                        55667788,
-                        202
-                ),
+                ViaCepService.getEndereco("55667788", 723),
+
                 "314.159.265-90",
                 "pedro.lima@email.com",
                 "senha202"
@@ -186,15 +157,19 @@ public class App extends Application {
 
         App.setListClients(
                 "Lucas Moreira",
-                new Endereco(
-                        66778899,
-                        303
-                ),
+                ViaCepService.getEndereco("66778899", 303),
                 "443.201.879-89",
                 "lucas.moreira@email.com",
                 "senha303"
         );
 
+        Endereco endereco = null;
+        try {
+            endereco = ViaCepService.getEndereco("48902300", 3);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(endereco.getBairro() + ", " + endereco.getLocalidade() +  ", " + endereco.getLogradouro());
 
         launch();
     }

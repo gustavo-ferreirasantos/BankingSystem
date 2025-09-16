@@ -1,4 +1,4 @@
-package com.demo.bank.Classes;
+package com.demo.bank.Model;
 
 
 

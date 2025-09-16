@@ -1,8 +1,9 @@
 package com.demo.bank.Controllers;
 
+import com.demo.bank.API.ViaCepService;
 import com.demo.bank.App;
-import com.demo.bank.Classes.Client;
-import com.demo.bank.Classes.Endereco;
+import com.demo.bank.Model.Client;
+import com.demo.bank.Model.Endereco;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -78,25 +79,35 @@ public class AdminController {
     }
 
     @FXML
-    protected void CreateClient(){
+    protected void CreateClient() throws Exception {
+
+        /*
         App.setListClients(
                 tfName.getText(),
-                new Endereco(
-                        Integer.parseInt(tfNumber.getText()),
-                        Integer.parseInt(tfCep.getText())
-                ),
+                ViaCepService.getEndereco(tfCep.getText()),
                 tfCpf.getText(),
                 tfEmail.getText(),
                 tfPassword.getText()
+        );
+*/
 
+
+        App.setListClients(
+                "Gustavo",
+                ViaCepService.getEndereco("48902300", 723),
+                "111.444.777-35",
+                "gustavo.silva@email.com",
+                "senha123"
         );
 
 
         for(int i = 0; i<App.getListClients().size(); i++){
-            System.out.printf("\nId:%d ======== Nome:%s  ======= Cpf: %s",
+            System.out.printf("\nId:%d ======== Nome:%s  ======= Cpf: %s ======= Logradouro:%s",
                     App.getListClients().get(i).getId(),
                     App.getListClients().get(i).getNameClient(),
-                    App.getListClients().get(i).getCpf());
+                    App.getListClients().get(i).getCpf(),
+                    App.getListClients().get(i).getEndereco().getBairro());
+
         }
     }
 
