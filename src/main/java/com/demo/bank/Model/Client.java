@@ -8,7 +8,7 @@ public class Client extends User {
     private Endereco endereco;
     private String cpf;
 
-
+    //Número de usuários criados, cada conta a mais aumenta em 1
     private static int numUser = 1000;
 
 
@@ -51,6 +51,7 @@ public class Client extends User {
     public String getCpf() {
         return cpf;
     }
+    //Exemplo de importância do encapsulamento: Fazer checagem de CPF
     public void setCpf(String cpf) {
         if (validateCpf(cpf)) {
             this.cpf = formatCpf(cpf);
