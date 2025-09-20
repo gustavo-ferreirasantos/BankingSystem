@@ -8,6 +8,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
+<!--
+Os id devem ter o mesmo nome que LoginController.java
+Anchor Panel é a "tela de fundo" da cena
+fx:controller conecta à classe LoginController.java
+btLoginButton é o botão pra entrar em uma conta de usuário
+tf (Text field) são os campos em que o usuário digita o nome e a senha
+<Image url="@../Images/Login.jpg" /> pega a imagem Login.jpg pra usar como plano de fundo
+As HBox escondem (cobrindo por cima) "remember-me, forget password e Enter Account" (funções não implementadas) da imagem
+-->
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.demo.bank.Controllers.LoginController">
       <ImageView fitHeight="600.0" fitWidth="436.0" layoutX="-4.0">
             <Image url="@../Images/Login.jpg" />

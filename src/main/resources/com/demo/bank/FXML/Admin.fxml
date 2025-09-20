@@ -12,9 +12,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<!--
+Assim como na tela de cliente, usa-se as mesmas classes de estilo do css (Os nomes styleClass neste arquivo devem corresponder aos do arquivo Style.css)
+
+-->
+
 <BorderPane prefHeight="506.0" prefWidth="900.0" styleClass="box_central" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.demo.bank.Controllers.AdminController">
    <left>
       <AnchorPane prefHeight="506.0" prefWidth="174.0" styleClass="menu" stylesheets="@../css/style.css" BorderPane.alignment="CENTER">
+          <!-- Logout -->
           <Button fx:id="btExit" alignment="CENTER" layoutX="17.0" layoutY="425.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Exit" prefHeight="40.0" prefWidth="160.0" styleClass="btn" stylesheets="@../css/style.css" text="Logout" textAlignment="JUSTIFY" textOverrun="WORD_ELLIPSIS">
             <graphic>
                <ImageView fitHeight="24.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
@@ -33,6 +39,7 @@
                </ImageView>
             </graphic>
          </Button>
+          <!-- Adicionar clientes -->
          <Button fx:id="btCreate" layoutX="17.0" layoutY="172.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#SceneAdd" prefHeight="40.0" prefWidth="160.0" styleClass="btn" stylesheets="@../css/style.css" text="Adicionar Clientes">
             <graphic>
                <ImageView fitHeight="27.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
@@ -42,6 +49,7 @@
                </ImageView>
             </graphic>
          </Button>
+          <!-- Lista de clientes -->
          <Button fx:id="btClients" layoutX="17.0" layoutY="291.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#SceneClients" prefHeight="40.0" prefWidth="160.0" styleClass="btn" stylesheets="@../css/style.css" text="Clientes">
             <graphic>
                <ImageView fitHeight="27.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
@@ -51,11 +59,13 @@
                </ImageView>
             </graphic>
          </Button>
+          <!-- Logo -->
          <ImageView fitHeight="57.0" fitWidth="61.0" layoutX="5.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@../Images/bank2.png" />
             </image>
          </ImageView>
+          <!-- Texto decorativo da logo -->
          <Text fill="WHITE" layoutX="64.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BankingSystem" textAlignment="CENTER" wrappingWidth="113.31013488769531">
             <font>
                <Font name="Georgia Bold" size="13.0" />
@@ -63,9 +73,11 @@
          </Text>
       </AnchorPane>
    </left>
+    <!-- Parte central da tela -->
    <center>
+       <!-- Funciona como uma pilha, o primeiro membro adicionado fica mais ao fundo -->
       <StackPane fx:id="boxCentral" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="705.0" BorderPane.alignment="CENTER">
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Admin Tela Inicial">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Admin Tela Inicial"> <!-- Cobre a maior parte da tela -->
                <font>
                   <Font name="Georgia" size="56.0" />
                </font>

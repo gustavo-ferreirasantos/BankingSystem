@@ -1,4 +1,4 @@
-module com.demo.bank {
+module com.demo.bank { //Basicamente organiza os pacotes
     // JavaFX
     requires javafx.controls;
     requires javafx.fxml;
@@ -27,7 +27,7 @@ module com.demo.bank {
     opens com.demo.bank.Controllers to javafx.fxml;
     opens com.demo.bank.Model to com.google.gson; // Necessário para Gson mapear os atributos
 
-    // Exporta pacotes
+    // Exporta pacotes (exporta apenas tipo public)
     exports com.demo.bank;
     exports com.demo.bank.Controllers;
     exports com.demo.bank.Model;

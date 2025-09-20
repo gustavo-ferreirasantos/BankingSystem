@@ -10,11 +10,12 @@ import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
+//Classe usada inteiramente para o "Login.fxml", controla a lógica dessa tela
+//implements Initializable indica que precisa da função initialize
 public class LoginController implements Initializable {
 
 
-
+    // @FXML indica que é um código usado nesse tipo de arquivo
     @FXML
     protected Button btLoginButton;
 
@@ -24,13 +25,13 @@ public class LoginController implements Initializable {
     @FXML
     protected TextField tfPassword;
 
-    @FXML
+    @FXML //Caixa pra selecionar o tipo de usuário (cliente ou admin)
     protected ChoiceBox<String> cbUserType;
-
+    //Armazena o tipo de usuário
     private String UserType;
     private final String[] UserTypes = {"Admin", "Client"};
 
-
+    //Adiciona os tipos de usuário na caixa seletora, o método necessariamente precisa se chamar "initialize"
     public void initialize(URL arg0, ResourceBundle arg1) {
         cbUserType.getItems().addAll(UserTypes);
         cbUserType.setOnAction(this::setUserType);
@@ -40,7 +41,7 @@ public class LoginController implements Initializable {
         UserType = cbUserType.getValue();
     }
 
-
+    //Entra na cena selecionada (admin ou cliente)
     @FXML
     protected void SelectScene(){
         App.setScene(UserType);

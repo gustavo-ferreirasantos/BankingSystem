@@ -22,16 +22,17 @@ public class App extends Application {
     private static Scene clientScene;
     private static Stage stage;
 
-
+    //Map é uma espécie de dicionário, nesse caso relaciona o nome da tela (string) e o objeto tela em si (parent)
     private static final Map<String, Parent> screens = new HashMap<>();
 
-
+    //Nomes que aparecem na lista de clientes ao logar como admin
     protected static ArrayList<Client> ListClients = new ArrayList<>();
 
+    //Função para adicionar clientes
     public static void setListClients(String nameClient, Endereco endereco, String cpf, String email, String password) {
         ListClients.add(new Client(nameClient, endereco, cpf, email, password));
     }
-
+    //Usado na tabela
     public static ArrayList<Client> getListClients() {
         return ListClients;
     }
@@ -43,7 +44,7 @@ public class App extends Application {
         primaryStage.setTitle("Login");
 
 
-        // Carregando telas
+        //Carrega todas as telas de uma só vez
         loadScreens();
 
 
@@ -66,19 +67,22 @@ public class App extends Application {
 
         // -------- ICONS -----------
         Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("Images/icon.png")));
+        //Adiciona o ícone do aplicativo
         primaryStage.getIcons().add(icon);
 
 
 
         primaryStage.setScene(loginScene);
+        //Centraliza a tela
         primaryStage.centerOnScreen();
-
+        //Apresenta a tela
         primaryStage.show();
     }
 
 
 
-
+    //Ele procura por uma pasta FXML que esteja no mesmo nível do arquivo App.class compilado. Ele retorna um objeto URL com o caminho para o arquivo.
+    //Caso não encontre, retorna null e dá NullPointerException
     public static void loadScreens() throws IOException {
         screens.put("Login", FXMLLoader.load(Objects.requireNonNull(App.class.getResource("FXML/Login.fxml"))));
         screens.put("Admin", FXMLLoader.load(Objects.requireNonNull(App.class.getResource("FXML/Admin.fxml"))));
@@ -87,7 +91,7 @@ public class App extends Application {
         screens.put("Admin_Clients", FXMLLoader.load(Objects.requireNonNull(App.class.getResource("/com/demo/bank/FXML/AdminClients.fxml"))));
         screens.put("Admin_Add", FXMLLoader.load(Objects.requireNonNull(App.class.getResource("/com/demo/bank/FXML/AdminAdd.fxml"))));
     }
-
+    //Acha a tela por meio de sua chave (nome)
     public static Parent getScreen(String name) {
         return screens.get(name);
     }
@@ -162,16 +166,18 @@ public class App extends Application {
                 "lucas.moreira@email.com",
                 "senha303"
         );
-
+        //Uso da API para obter o endereço a partir do CEP (teste no terminal)
         Endereco endereco = null;
         try {
             endereco = ViaCepService.getEndereco("48902300", 3);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) { //Detecta qualquer erro
+            throw new RuntimeException(e);//Erro grave
         }
         System.out.println(endereco.getBairro() + ", " + endereco.getLocalidade() +  ", " + endereco.getLogradouro());
 
+        //Responsável por abrir o aplicativo
         launch();
+        System.out.println("App fechado!");
     }
 
 }

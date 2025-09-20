@@ -6,8 +6,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class mysqlConnect {
-    Connection conn = null;
-
+    //Connection conn = null;
+    //Pra que isso será usado?
     public static Connection ConnectDb() {
         try{
             Class.forName("com.mysql.jdbc.Driver");
