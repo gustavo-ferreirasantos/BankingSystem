@@ -62,8 +62,7 @@ public class Client extends User {
 
 
 
-
-
+    //Isso torna impossível colocar CPFs que não existem
     public static boolean validateCpf(String cpf) {
         if (cpf == null) return false;
 
@@ -100,7 +99,7 @@ public class Client extends User {
         // Mantém apenas dígitos
         String digits = cpf.replaceAll("\\D", "");
         if (digits.length() != 11) return cpf; // retorna como está se não tiver 11 dígitos
-
+        //Retorna o CPF no formato XXX.XXX.XXX-XX
         return digits.substring(0, 3) + "." +
                 digits.substring(3, 6) + "." +
                 digits.substring(6, 9) + "-" +

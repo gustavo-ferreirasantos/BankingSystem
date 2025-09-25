@@ -4,11 +4,13 @@ import com.demo.bank.API.ViaCepService;
 import com.demo.bank.Model.Client;
 import com.demo.bank.Model.Endereco;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.scene.Cursor;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+//Application é abstrata
 public class App extends Application {
     private static Scene loginScene;
     private static Scene adminScene;
@@ -38,7 +41,7 @@ public class App extends Application {
     }
 
 
-    @Override
+    @Override //É uma função executada pelo metodo launch()
     public void start(Stage primaryStage) throws IOException {
         stage = primaryStage;
         primaryStage.setTitle("Login");
@@ -71,7 +74,7 @@ public class App extends Application {
         primaryStage.getIcons().add(icon);
 
 
-
+        //Por padrão foi definido que a tela de Login é a inicial
         primaryStage.setScene(loginScene);
         //Centraliza a tela
         primaryStage.centerOnScreen();
@@ -83,6 +86,7 @@ public class App extends Application {
 
     //Ele procura por uma pasta FXML que esteja no mesmo nível do arquivo App.class compilado. Ele retorna um objeto URL com o caminho para o arquivo.
     //Caso não encontre, retorna null e dá NullPointerException
+    //FXMLLoader é quem executa as funções "initialize"
     public static void loadScreens() throws IOException {
         screens.put("Login", FXMLLoader.load(Objects.requireNonNull(App.class.getResource("FXML/Login.fxml"))));
         screens.put("Admin", FXMLLoader.load(Objects.requireNonNull(App.class.getResource("FXML/Admin.fxml"))));
@@ -97,7 +101,7 @@ public class App extends Application {
     }
 
 
-
+    //Observe que as opções na tela de admin não são cenas diferentes
     public static void setScene(String scene) {
         switch (scene){
             case "Admin":
@@ -112,9 +116,11 @@ public class App extends Application {
                 stage.setScene(loginScene);
                 stage.setTitle("Login");
                 break;
+            default:
+                Platform.exit();//Fecha o aplicativo
+                throw new IllegalArgumentException("Tela inválida: "+scene);
         }
         stage.centerOnScreen();
-
     }
 
     public static void main(String[] args) throws Exception {

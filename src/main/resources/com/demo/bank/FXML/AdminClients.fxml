@@ -5,8 +5,9 @@
 <?import javafx.scene.layout.BorderPane?>
 
 <BorderPane fx:id="root" onDragDetected="#UpdateTable" prefHeight="506.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.demo.bank.Controllers.AdminController">
-   <center>
-      <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/style.css" BorderPane.alignment="CENTER">
+   <center> <!-- Apenas o centro é usado, a parte esquerda é definida na tela de Admin -->
+       <!-- Retirei do TableView: stylesheets="@../css/style.css" -->
+      <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
             <TableColumn fx:id="columnId" prefWidth="96.00006407499313" style="-fx-text-fill: red;" text="Id" />
           <TableColumn fx:id="columnName" prefWidth="291.19993591308594" text="Name" />

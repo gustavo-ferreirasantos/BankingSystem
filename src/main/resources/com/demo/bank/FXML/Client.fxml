@@ -6,10 +6,9 @@
 <?import javafx.scene.text.Text?>
 
 <!--
-BorderPane divide a tela em 5 regiões: top,bottom,left e right, apenas a left é usada no código
+BorderPane divide a tela em 5 regiões: top,bottom,left,right e center, apenas a left é usada no código
 style.css indica qual estilo a página segue, por meio do nome "styleClass" correspondente ao que está no arquivo CSS
 AnchorPane está dentro de left, por isso se torna a parte esquerda da tela (BorderPane)
-Aparentemente o Text é usado pra definir o quanto o menu esquerdo cobre
 -->
 
 <BorderPane prefHeight="506.0" prefWidth="900.0" styleClass="box_central" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.demo.bank.Controllers.ClientController">
