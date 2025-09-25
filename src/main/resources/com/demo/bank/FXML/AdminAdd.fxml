@@ -4,7 +4,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="506.0" prefWidth="705.0" stylesheets="@../css/style.css" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.demo.bank.Controllers.AdminController">
@@ -12,10 +11,11 @@
    <TextField fx:id="tfCpf" layoutX="53.0" layoutY="121.0" prefHeight="26.0" prefWidth="236.0" />
    <TextField fx:id="tfEmail" layoutX="53.0" layoutY="317.0" prefHeight="26.0" prefWidth="407.0" />
    <Text layoutX="54.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="210.13672637939453" />
+    <!-- Ainda não foi implementado
    <Text fx:id="errorCpf" fill="RED" layoutX="199.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cpf inválido" visible="false" wrappingWidth="88.5367660522461">
       <font>
          <Font name="System Bold" size="12.0" />
-      </font></Text>
+      </font></Text> -->
    <Text layoutX="54.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="210.13672637939453" />
    <Button fx:id="btCreateSend" layoutX="236.0" layoutY="437.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#CreateClient" prefHeight="40.0" prefWidth="160.0" style="-fx-text-fill: black;" styleClass="btn" stylesheets="@../css/style.css" text="Enviar" />
    <Text layoutX="54.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Endereço:" wrappingWidth="210.13672637939453" />
@@ -24,7 +24,9 @@
    <TextField fx:id="tfCep" layoutX="53.0" layoutY="240.0" prefHeight="26.0" prefWidth="272.0" />
    <Text layoutX="54.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cep" wrappingWidth="66.9367904663086" />
    <Text layoutX="54.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cpf" wrappingWidth="210.13672637939453" />
-   <TextField fx:id="tfRg" layoutX="385.0" layoutY="121.0" prefHeight="26.0" prefWidth="236.0" />
+  <!-- Aparentemente outra parte inútil do código
+  <TextField fx:id="tfRg" layoutX="385.0" layoutY="121.0" prefHeight="26.0" prefWidth="236.0" />
+  -->
    <Text layoutX="385.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rg" wrappingWidth="210.13672637939453" />
    <TextField fx:id="tfPassword" layoutX="53.0" layoutY="376.0" prefHeight="26.0" prefWidth="407.0" />
    <Text layoutX="54.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="210.13672637939453" />

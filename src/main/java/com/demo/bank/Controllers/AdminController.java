@@ -6,6 +6,7 @@ import com.demo.bank.Model.Client;
 import com.demo.bank.Model.Endereco;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -20,15 +21,15 @@ public class AdminController {
 
 
 
-    @FXML
+    @FXML //Tabela de clientes
     protected TableView<Client> table;
-    @FXML
+    @FXML //3 colunas: Nome,Cpf e ID
     protected TableColumn<Client, String> columnName , columnCpf, columnId ;
 
-    @FXML
+    @FXML //Campos de texto na hora de adicionar clientes
     protected TextField tfName, tfEmail, tfPassword, tfCep, tfCpf, tfNumber;
 
-    @FXML
+    @FXML //Usado na tabela
     private BorderPane root;
 
 
@@ -81,24 +82,23 @@ public class AdminController {
     @FXML
     protected void CreateClient() throws Exception {
 
-        /*
+        //Adicionar cliente pela caixa de texto
         App.setListClients(
                 tfName.getText(),
-                ViaCepService.getEndereco(tfCep.getText()),
-                tfCpf.getText(),
+                ViaCepService.getEndereco(tfCep.getText(),Integer.parseInt(tfNumber.getText())),
+                tfCpf.getText(), //Só aceita CPF que existe pelo visto
                 tfEmail.getText(),
                 tfPassword.getText()
         );
-*/
 
-
-        App.setListClients(
-                "Gustavo",
-                ViaCepService.getEndereco("48902300", 723),
-                "111.444.777-35",
-                "gustavo.silva@email.com",
-                "senha123"
-        );
+        //Adicionar cliente fixo (para testes)
+//        App.setListClients(
+//                "Gustavo",
+//                ViaCepService.getEndereco("48902300", 723),
+//                "111.444.777-35",
+//                "gustavo.silva@email.com",
+//                "senha123"
+//        );
 
 
         for(int i = 0; i<App.getListClients().size(); i++){
@@ -124,8 +124,8 @@ public class AdminController {
     protected void SceneAdd() {
         effectButton(btCreate);
 
-        boxCentral.getChildren().clear();
-        boxCentral.getChildren().add(App.getScreen("Admin_Add"));
+        boxCentral.getChildren().clear(); //Limpa a tela central
+        boxCentral.getChildren().add(App.getScreen("Admin_Add")); //Adiciona uma nova tela (A de adicionar clientes)
     }
 
 

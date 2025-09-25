@@ -30,11 +30,15 @@ public class LoginController implements Initializable {
     //Armazena o tipo de usuário
     private String UserType;
     private final String[] UserTypes = {"Admin", "Client"};
-
-    //Adiciona os tipos de usuário na caixa seletora, o método necessariamente precisa se chamar "initialize"
+    //Adiciona os tipos de usuário na caixa seletora, o metodo necessariamente precisa se chamar "initialize"
+    //É executada sempre que a tela é carregada (antes dela aparecer pro usuário) pelo metodo FXMLLoader.load (loadScreens)
     public void initialize(URL arg0, ResourceBundle arg1) {
         cbUserType.getItems().addAll(UserTypes);
+        //O metodo "setUserType" é executado sempre que a escolha na ChoiceBox for alterada pelo usuário
+        //"this" refere-se à instância do objeto atual, '::' é o operador de referência a metodo
         cbUserType.setOnAction(this::setUserType);
+        //Já coloca uma escolha inicial na ChoiceBox, pra ela não ficar vazia
+        cbUserType.setValue(UserTypes[0]);
     }
 
     public void setUserType(ActionEvent event) {

@@ -21,6 +21,7 @@ module com.demo.bank { //Basicamente organiza os pacotes
 
     // Apache HttpClient (dependência externa)
     requires org.apache.httpcomponents.httpclient.fluent;
+    requires javafx.graphics;
 
     // Abre pacotes para reflexão do JavaFX
     opens com.demo.bank to javafx.fxml;

@@ -15,7 +15,6 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class AdminController {
 
     private static final Logger logger = Logger.getLogger(AdminController.class.getName());
@@ -61,8 +60,6 @@ public class AdminController {
     }
     */
 
-
-
     // ---------------- Troca de Telas ----------------
     @FXML
     protected void SceneClients(ActionEvent event) {
@@ -76,14 +73,10 @@ public class AdminController {
         boxCentral.getChildren().add(SceneAdd);
     }
 
-
     // ---------------- Exit ----------------
     @FXML
     protected void Exit(){
         boxCentral.getChildren().clear(); // limpa qualquer tela carregada
         App.setScene("Login");
     }
-
-
-
 }
