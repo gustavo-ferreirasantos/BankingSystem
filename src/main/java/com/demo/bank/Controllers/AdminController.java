@@ -26,8 +26,8 @@ public class AdminController {
     @FXML //3 colunas: Nome,Cpf e ID
     protected TableColumn<Client, String> columnName , columnCpf, columnId ;
 
-    @FXML //Campos de texto na hora de adicionar clientes
-    protected TextField tfName, tfEmail, tfPassword, tfCep, tfCpf, tfNumber;
+    @FXML //Campos de texto na hora de adicionar clientes (atualmente é usado apenas Nome, CEP, CPF e Number)
+    protected TextField tfName, tfEmail, tfPassword, tfCep, tfCpf, tfNumber,tfRg;
 
     @FXML //Usado na tabela
     private BorderPane root;

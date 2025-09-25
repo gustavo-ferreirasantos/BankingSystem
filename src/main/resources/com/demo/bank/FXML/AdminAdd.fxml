@@ -24,10 +24,9 @@
    <TextField fx:id="tfCep" layoutX="53.0" layoutY="240.0" prefHeight="26.0" prefWidth="272.0" />
    <Text layoutX="54.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cep" wrappingWidth="66.9367904663086" />
    <Text layoutX="54.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cpf" wrappingWidth="210.13672637939453" />
-  <!-- Aparentemente outra parte inútil do código
   <TextField fx:id="tfRg" layoutX="385.0" layoutY="121.0" prefHeight="26.0" prefWidth="236.0" />
-  -->
    <Text layoutX="385.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rg" wrappingWidth="210.13672637939453" />
    <TextField fx:id="tfPassword" layoutX="53.0" layoutY="376.0" prefHeight="26.0" prefWidth="407.0" />
    <Text layoutX="54.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="210.13672637939453" />
 </AnchorPane>
+<!-- O email, senha e Rg ainda não servem pra nada além de estética -->
