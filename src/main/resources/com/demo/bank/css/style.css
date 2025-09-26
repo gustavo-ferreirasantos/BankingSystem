@@ -1,7 +1,9 @@
 /*CSS é usado nos arquivos .fxml (exceto na tela de login)
 .box_central e .menu são nomes genéricos definidos por quem fez o arquivo, quando style.css é usado, styleClass deve ter o mesmo nome deles
-
 */
+.login{
+    -fx-background-image: url("../Images/Login.png");
+}
 
 /*A tela como um todo*/
 .box_central{
