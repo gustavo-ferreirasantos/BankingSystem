@@ -1,6 +1,6 @@
 package com.demo.bank.Controllers;
 
-import com.demo.bank.App;
+import com.demo.bank.StartApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
@@ -12,7 +12,7 @@ public class ClientController {
 
     @FXML
     protected void Exit(){
-        App.setScene("Login");
+        StartApplication.setScene("Login");
     }
 
 

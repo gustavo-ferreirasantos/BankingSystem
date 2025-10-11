@@ -1,8 +1,10 @@
 package com.demo.bank;
 
+import com.demo.bank.API.ConversionService;
 import com.demo.bank.API.ViaCepService;
 import com.demo.bank.Model.Client;
 import com.demo.bank.Model.Endereco;
+import com.demo.bank.Model.FxRatesResponse;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +12,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.scene.Cursor;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ import java.util.Map;
 import java.util.Objects;
 
 //Application é abstrata
-public class App extends Application {
+public class StartApplication extends Application {
     private static Scene loginScene;
     private static Scene adminScene;
     private static Scene clientScene;
@@ -88,12 +89,12 @@ public class App extends Application {
     //Caso não encontre, retorna null e dá NullPointerException
     //FXMLLoader é quem executa as funções "initialize"
     public static void loadScreens() throws IOException {
-        screens.put("Login", FXMLLoader.load(Objects.requireNonNull(App.class.getResource("FXML/Login.fxml"))));
-        screens.put("Admin", FXMLLoader.load(Objects.requireNonNull(App.class.getResource("FXML/Admin.fxml"))));
-        screens.put("Client", FXMLLoader.load(Objects.requireNonNull(App.class.getResource("FXML/Client.fxml"))));
-        screens.put("Admin_Placeholder", FXMLLoader.load(Objects.requireNonNull(App.class.getResource("/com/demo/bank/FXML/AdminPlaceholder.fxml"))));
-        screens.put("Admin_Clients", FXMLLoader.load(Objects.requireNonNull(App.class.getResource("/com/demo/bank/FXML/AdminClients.fxml"))));
-        screens.put("Admin_Add", FXMLLoader.load(Objects.requireNonNull(App.class.getResource("/com/demo/bank/FXML/AdminAdd.fxml"))));
+        screens.put("Login", FXMLLoader.load(Objects.requireNonNull(StartApplication.class.getResource("FXML/Login.fxml"))));
+        screens.put("Admin", FXMLLoader.load(Objects.requireNonNull(StartApplication.class.getResource("FXML/Admin.fxml"))));
+        screens.put("Client", FXMLLoader.load(Objects.requireNonNull(StartApplication.class.getResource("FXML/Client.fxml"))));
+        screens.put("Admin_Placeholder", FXMLLoader.load(Objects.requireNonNull(StartApplication.class.getResource("/com/demo/bank/FXML/AdminPlaceholder.fxml"))));
+        screens.put("Admin_Clients", FXMLLoader.load(Objects.requireNonNull(StartApplication.class.getResource("/com/demo/bank/FXML/AdminClients.fxml"))));
+        screens.put("Admin_Add", FXMLLoader.load(Objects.requireNonNull(StartApplication.class.getResource("/com/demo/bank/FXML/AdminAdd.fxml"))));
     }
     //Acha a tela por meio de sua chave (nome)
     public static Parent getScreen(String name) {
@@ -140,7 +141,7 @@ public class App extends Application {
 // CPFs válidos (apenas para testes)
 
 
-        App.setListClients(
+        StartApplication.setListClients(
                 "Carlos Souza",
                 ViaCepService.getEndereco("11223344", 44),
                 "987.654.321-00",
@@ -148,7 +149,7 @@ public class App extends Application {
                 "senha789"
         );
 
-        App.setListClients(
+        StartApplication.setListClients(
                 "Ana Costa",
                 ViaCepService.getEndereco("48902300", 723),
                 "258.371.460-08",
@@ -156,7 +157,7 @@ public class App extends Application {
                 "senha101"
         );
 
-        App.setListClients(
+        StartApplication.setListClients(
                 "Pedro Lima",
                 ViaCepService.getEndereco("55667788", 723),
 
@@ -165,7 +166,7 @@ public class App extends Application {
                 "senha202"
         );
 
-        App.setListClients(
+        StartApplication.setListClients(
                 "Lucas Moreira",
                 ViaCepService.getEndereco("66778899", 303),
                 "443.201.879-89",
@@ -181,6 +182,8 @@ public class App extends Application {
         }
         System.out.println(endereco.getBairro() + ", " + endereco.getLocalidade() +  ", " + endereco.getLogradouro());
 
+        FxRatesResponse moeda = ConversionService.conversion();
+        System.out.println(moeda.toString());
         //Responsável por abrir o aplicativo
         launch();
         System.out.println("App fechado!");

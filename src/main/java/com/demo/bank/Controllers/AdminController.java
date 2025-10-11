@@ -1,12 +1,10 @@
 package com.demo.bank.Controllers;
 
 import com.demo.bank.API.ViaCepService;
-import com.demo.bank.App;
+import com.demo.bank.StartApplication;
 import com.demo.bank.Model.Client;
-import com.demo.bank.Model.Endereco;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -61,7 +59,7 @@ public class AdminController {
 
             // Adiciona os clientes existentes (se já tiver)
 
-            table.setItems(FXCollections.observableArrayList(App.getListClients()));
+            table.setItems(FXCollections.observableArrayList(StartApplication.getListClients()));
             // Listener para quando o BorderPane for adicionado à cena
             root.sceneProperty().addListener((obs, oldScene, newScene) -> {
                 if (newScene != null) {
@@ -76,14 +74,14 @@ public class AdminController {
     @FXML
     public void UpdateTable() {
         //table.getItems().setAll(App.getListClients());
-        table.setItems(FXCollections.observableArrayList(App.getListClients()));
+        table.setItems(FXCollections.observableArrayList(StartApplication.getListClients()));
     }
 
     @FXML
     protected void CreateClient() throws Exception {
 
         //Adicionar cliente pela caixa de texto
-        App.setListClients(
+        StartApplication.setListClients(
                 tfName.getText(),
                 ViaCepService.getEndereco(tfCep.getText(),Integer.parseInt(tfNumber.getText())),
                 tfCpf.getText(), //Só aceita CPF que existe pelo visto
@@ -101,12 +99,12 @@ public class AdminController {
 //        );
 
 
-        for(int i = 0; i<App.getListClients().size(); i++){
+        for(int i = 0; i< StartApplication.getListClients().size(); i++){
             System.out.printf("\nId:%d ======== Nome:%s  ======= Cpf: %s ======= Logradouro:%s",
-                    App.getListClients().get(i).getId(),
-                    App.getListClients().get(i).getNameClient(),
-                    App.getListClients().get(i).getCpf(),
-                    App.getListClients().get(i).getEndereco().getBairro());
+                    StartApplication.getListClients().get(i).getId(),
+                    StartApplication.getListClients().get(i).getNameClient(),
+                    StartApplication.getListClients().get(i).getCpf(),
+                    StartApplication.getListClients().get(i).getEndereco().getBairro());
 
         }
     }
@@ -117,7 +115,7 @@ public class AdminController {
     protected void SceneClients() {
         effectButton(btClients);
         boxCentral.getChildren().clear();
-        boxCentral.getChildren().add(App.getScreen("Admin_Clients"));
+        boxCentral.getChildren().add(StartApplication.getScreen("Admin_Clients"));
     }
 
     @FXML
@@ -125,7 +123,7 @@ public class AdminController {
         effectButton(btCreate);
 
         boxCentral.getChildren().clear(); //Limpa a tela central
-        boxCentral.getChildren().add(App.getScreen("Admin_Add")); //Adiciona uma nova tela (A de adicionar clientes)
+        boxCentral.getChildren().add(StartApplication.getScreen("Admin_Add")); //Adiciona uma nova tela (A de adicionar clientes)
     }
 
 
@@ -135,8 +133,8 @@ public class AdminController {
         effectButton(null);
 
         boxCentral.getChildren().clear(); // limpa qualquer tela carregada
-        boxCentral.getChildren().add(App.getScreen("Admin_Placeholder"));
-        App.setScene("Login");
+        boxCentral.getChildren().add(StartApplication.getScreen("Admin_Placeholder"));
+        StartApplication.setScene("Login");
     }
 
 

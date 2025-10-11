@@ -1,6 +1,6 @@
 package com.demo.bank.Controllers;
 
-import com.demo.bank.App;
+import com.demo.bank.StartApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -48,6 +48,6 @@ public class LoginController implements Initializable {
     //Entra na cena selecionada (admin ou cliente)
     @FXML
     protected void SelectScene(){
-        App.setScene(UserType);
+        StartApplication.setScene(UserType);
     }
 }

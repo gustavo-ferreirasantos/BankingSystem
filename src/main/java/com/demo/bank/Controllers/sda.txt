@@ -1,6 +1,6 @@
 package com.demo.bank.Controllers;
 
-import com.demo.bank.App;
+import com.demo.bank.StartApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
